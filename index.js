@@ -77,7 +77,6 @@ class SinglyLinkedList{
         this.length++
         return this
     }
-
     get(index){
         if (this.length===0 || this.length <= index || index<0) return undefined
         let element=this.head
@@ -87,6 +86,13 @@ class SinglyLinkedList{
         i++ 
         }
         return element
+    }
+
+    set(index,val){
+        let element=this.get(index)
+        element.value=val 
+        return element;
+
     }
 }
 
