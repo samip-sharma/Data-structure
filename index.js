@@ -126,6 +126,36 @@ class SinglyLinkedList{
         return temp
 
     }
+
+
+    reverse(){
+        if (this.length===0) return undefined;
+        let node=this.head
+        this.head=this.tail
+        this.tail=node
+        let next;
+        let previous=null;
+        for(let i=0;i<this.length;++i){
+            next=node.next
+            node.next=previous
+            previous=node;
+            node=next;
+           
+        }
+        return this
+        
+    }
+
+    to_arr(){
+        let current=this.head
+        let arr=[current.value]
+
+        for(let i=0;i<this.length-1;++i){
+             current= current.next
+            arr.push(current.value)
+        }
+        return arr
+    }
 }
 
 let a= new SinglyLinkedList()
