@@ -114,9 +114,22 @@ class SinglyLinkedList{
 
 
 
-    remove(){
+    remove(index){
+        if (index===0) return this.shift()
+        if (index=== this.length-1) return this.pop()
+         if (index<0 || index>=this.length) return undefined;
+        let previousNode=this.getPreviousnode(index)
+        let temp=this.get(index)
+        let next=temp.next
+        previousNode.next=next
+        this.length--
+        return temp
 
     }
 }
 
 let a= new SinglyLinkedList()
+a.push(0)
+a.push(1)
+a.push(2)
+a.push(3)
