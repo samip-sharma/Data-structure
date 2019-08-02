@@ -37,7 +37,7 @@ class SinglyLinkedList{
             this.length--
             return temp
         }
-        let secondLast= this.getSecondLastNode()
+        let secondLast= this.getPreviousnode(this.length-1)
         let temp= this.tail
         this.tail=secondLast
         secondLast.next=null
@@ -45,15 +45,6 @@ class SinglyLinkedList{
         return temp
     }
 
-    getSecondLastNode(){
-        let current=this.head
-        let next=current.next
-        while(next.next){
-            current=next
-            next=current.next
-        }
-        return current;
-    }
 
     shift(){
         if (this.length===0) return undefined
@@ -92,6 +83,38 @@ class SinglyLinkedList{
         let element=this.get(index)
         element.value=val 
         return element;
+    }
+
+    insert(index,val){
+        if (index===0) return this.unshift(val)
+        if (index===this.length-1) return this.push(val)
+        let newNode= new Node(val)
+        let temp=this.get(index)
+        let previousNode= this.getPreviousnode(index)
+        previousNode.next=newNode
+        this.length++
+        newNode.next=temp
+        return this
+    }
+
+
+    getPreviousnode(index){
+        if (index===0) return undefined
+        if (index>=this.length) return undefined
+        let current=this.head
+        let next=current.next
+        let i=1
+        while(i<index){
+            current=next
+            next=current.next
+            i++
+        }
+        return current;
+    }
+
+
+
+    remove(){
 
     }
 }
