@@ -54,6 +54,29 @@ class SinglyLinkedList{
         }
         return current;
     }
+
+    shift(){
+        if (this.length===0) return undefined
+        let temp=this.head
+        this.head= temp.next
+        this.length--
+        if (this.length===0) this.tail=null;
+        return temp
+    }
+
+    unshift(value){
+        let newNode= new Node(value)
+        if (this.length===0){
+            this.head=newNode
+            this.tail=newNode
+        }else{
+        let temp=this.head
+        this.head=newNode
+        newNode.next=temp
+        }
+        this.length++
+        return this
+    }
 }
 
 let a= new SinglyLinkedList()
