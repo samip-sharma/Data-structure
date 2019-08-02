@@ -77,6 +77,17 @@ class SinglyLinkedList{
         this.length++
         return this
     }
+
+    get(index){
+        if (this.length===0 || this.length <= index || index<0) return undefined
+        let element=this.head
+        let i =0
+        while(i<index){    
+           element=element.next
+        i++ 
+        }
+        return element
+    }
 }
 
 let a= new SinglyLinkedList()
