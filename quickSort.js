@@ -1,20 +1,18 @@
-function quickSort(arr){
-    let index = pivot(arr)
-
-    if( arr.length <= 1) {
-        return arr
-    }
+function quickSort(arr, left = 0, right = arr.length-1){
     
-    quickSort(left)
-    quickSort(right)
-
+    if(left < right){
+    let pivotIndex = pivot(arr, left, right)
+    quickSort(arr , left , pivotIndex-1)
+    quickSort(arr, pivotIndex+1, right)
+    }
+    return arr
 }
 
-function pivot(arr, start = 0, end = arr.length +1){
+function pivot(arr, start = 0, end = arr.length -1){
     let pivot = arr[start]
     let swapIdx = start 
 
-    for (let i = start+1; i < arr.length ; i++){
+    for (let i = start+1; i <= end ; i++){
         if (pivot > arr[i]){
             swapIdx++
             swap(arr, swapIdx ,i)
@@ -26,6 +24,6 @@ function pivot(arr, start = 0, end = arr.length +1){
             arr[i] = arr[j]
             arr[j] = temp 
     }
-    swap(arr, swapIdx, start)
+    swap(arr, start, swapIdx)
     return swapIdx
 }
