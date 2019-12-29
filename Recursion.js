@@ -76,3 +76,31 @@ function totalIntegers(array){
 
 	return total + totalIntegers(array);
 }
+
+
+// Write a function that sums squares of numbers in list that may contain more lists
+
+// Sample:
+
+// var l = [1,2,3]; 
+// console.log(SumSquares(l)); // 1 + 4 + 9 = 14
+
+// l = [[1,2],3]; 
+// console.log(SumSquares(l)); // 1 + 4 + 9 = 14
+
+// l = [[[[[[[[[1]]]]]]]]] 
+// console.log(SumSquares(l)); // 1 = 1
+
+
+function SumSquare(arr){
+    let sum = 0
+    arr.forEach(el=>{
+        if(typeof(el)==="number"){
+            sum += el*el
+        }else{
+            sum += SumSquare(el)
+        }
+    })
+
+    return sum
+}
